@@ -1,0 +1,9 @@
+site_name: CGILAB Docs
+
+theme:
+  name: material
+
+nav:
+  - Home: index.md
+  - Unreal:
+      - Week 1: unreal/week01.md
