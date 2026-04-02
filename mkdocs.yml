@@ -1,4 +1,5 @@
 site_name: CGILAB Docs
+site_url: https://cgilabs.github.io/
 
 theme:
   name: material
@@ -7,3 +8,9 @@ nav:
   - Home: index.md
   - Unreal:
       - Week 1: unreal/week01.md
+
+plugins:
+  - search
+  - revealjs:
+      theme: black
+      transition: slide
