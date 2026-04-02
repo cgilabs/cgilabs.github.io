@@ -8,7 +8,7 @@ revealjs:
 <a href="./#/">🎤 슬라이드</a>
 </p>
 
-# Week 1 - Unreal Engine
+# Week 2 - Unreal Engine
 
 ---
 
