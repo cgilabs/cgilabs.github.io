@@ -11,8 +11,7 @@
   --md-primary-bg-color: #24292f;
   --md-accent-fg-color: #0969da;
 
-  /* 사이드바 폭 */
-  --md-sidebar-width: 19rem;
+  --md-sidebar-width: 18rem;
 }
 
 html,
@@ -35,13 +34,14 @@ body {
   box-shadow: none;
 }
 
-.md-header__inner {
-  display: flex;
-  align-items: center;
+.md-header__title,
+.md-header__button,
+.md-search__icon {
+  color: #24292f;
 }
 
-.md-header__button.md-logo {
-  margin-right: 0.4rem;
+.md-header__title .md-ellipsis {
+  font-weight: 700;
 }
 
 .md-header__button.md-logo img {
@@ -49,21 +49,11 @@ body {
   width: auto;
 }
 
-.md-header__title {
-  color: #24292f !important;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.md-header__title:hover {
-  color: #24292f !important;
-}
-
 /* 검색 */
 .md-search__form {
   background: #ffffff;
   border: 1px solid #d0d7de;
-  border-radius: 8px;
+  border-radius: 10px;
   box-shadow: none;
 }
 
@@ -73,7 +63,7 @@ body {
 
 /* 전체 폭 */
 .md-grid {
-  max-width: 1440px;
+  max-width: 1500px;
 }
 
 /* 좌측 사이드바 */
@@ -81,17 +71,10 @@ body {
   border-right: 1px solid #d8dee4;
 }
 
-/* 핵심: 메뉴와 footer를 세로 배치 */
-.md-sidebar--primary .md-sidebar__scrollwrap {
-  display: flex;
-  flex-direction: column;
-  height: calc(100vh - 3rem);
+/* 스크롤 영역 */
+.md-sidebar__scrollwrap {
   padding-top: 10px;
-}
-
-.md-sidebar--primary .md-nav {
-  flex: 1 1 auto;
-  min-height: 0;
+  padding-bottom: 100px;
 }
 
 /* 메뉴 그룹 제목 */
@@ -122,8 +105,6 @@ body {
   border-radius: 6px;
   padding: 7px 12px;
   transition: background-color 0.15s ease, color 0.15s ease;
-
-  /* 긴 메뉴명 한 줄 유지 */
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -276,10 +257,13 @@ body {
   color: #57606a;
 }
 
-/* 사이드바 하단 GitBook 박스 */
+/* 왼쪽 아래 GitBook 박스 */
 .custom-sidebar-footer {
-  margin-top: auto;
-  padding: 12px;
+  position: fixed;
+  left: 16px;
+  bottom: 16px;
+  width: calc(18rem - 32px);
+  z-index: 20;
 }
 
 .custom-sidebar-footer a {
@@ -311,16 +295,17 @@ body {
 .link-card-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
+  gap: 16px;
   margin-top: 1.2rem;
   margin-bottom: 2rem;
+  max-width: 780px;
 }
 
 .link-card {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 72px;
+  min-height: 86px;
   padding: 18px 20px;
   border: 1px solid #d8dee4;
   border-radius: 10px;
@@ -352,7 +337,7 @@ body {
 
 .link-card-arrow {
   margin-left: 16px;
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   line-height: 1;
   color: #6b7280;
   flex-shrink: 0;
@@ -362,19 +347,16 @@ body {
   color: #0969da;
 }
 
-@media screen and (max-width: 900px) {
-  .link-card-grid {
-    grid-template-columns: 1fr;
+@media screen and (min-width: 76.25em) {
+  .md-sidebar--primary {
+    width: 18rem;
   }
 }
 
-@media screen and (min-width: 76.25em) {
-  .md-sidebar--primary {
-    width: 19rem;
-  }
-
-  .md-content {
-    margin-left: 19rem;
+@media screen and (max-width: 900px) {
+  .link-card-grid {
+    grid-template-columns: 1fr;
+    max-width: 100%;
   }
 }
 
@@ -395,12 +377,9 @@ body {
     font-size: 1.15rem;
   }
 
-  .md-sidebar--primary .md-sidebar__scrollwrap {
-    height: auto;
-    display: block;
-  }
-
   .custom-sidebar-footer {
-    margin-top: 16px;
+    position: static;
+    width: auto;
+    margin: 16px 12px 0;
   }
 }
