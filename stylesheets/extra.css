@@ -296,3 +296,68 @@ body {
     font-size: 1.15rem;
   }
 }
+
+/* =========================
+   Home / Section Link Cards
+   ========================= */
+
+.link-card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.link-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 72px;
+  padding: 18px 20px;
+  border: 1px solid #d8dee4;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #24292f;
+  text-decoration: none !important;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+}
+
+.link-card:hover {
+  border-color: #0969da;
+  background: #f8fbff;
+  box-shadow: 0 2px 10px rgba(9, 105, 218, 0.08);
+}
+
+.link-card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.45;
+  color: #24292f;
+}
+
+.link-card-arrow {
+  margin-left: 16px;
+  font-size: 1.4rem;
+  line-height: 1;
+  color: #6b7280;
+  flex-shrink: 0;
+}
+
+.link-card:hover .link-card-arrow {
+  color: #0969da;
+}
+
+/* 모바일 */
+@media screen and (max-width: 900px) {
+  .link-card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.link-card-desc {
+  margin-top: 6px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #57606a;
+}
