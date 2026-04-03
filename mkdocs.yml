@@ -1,36 +1,103 @@
-site_name: CGILABS Docs
-site_url: https://cgilabs.github.io/
+/* 전체 기본 톤 */
+:root {
+  --md-primary-fg-color: #ffffff;
+  --md-primary-bg-color: #111827;
+  --md-accent-fg-color: #2563eb;
 
-theme:
-  name: material
-  language: ko
-  features:
-    - navigation.sections
-    - navigation.expand
-    - navigation.top
-    - search.suggest
-    - search.highlight
+  --md-default-bg-color: #ffffff;
+  --md-default-fg-color: #1f2937;
+  --md-typeset-a-color: #2563eb;
+}
 
-  palette:
-    - scheme: default
-      primary: indigo
-      accent: blue
-      toggle:
-        icon: material/weather-night
-        name: 다크 모드로 전환
-    - scheme: slate
-      primary: black
-      accent: lime
-      toggle:
-        icon: material/weather-sunny
-        name: 라이트 모드로 전환
+/* 상단 헤더를 GitHub Docs처럼 얇고 깔끔하게 */
+.md-header {
+  background: #ffffff;
+  color: #111827;
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: none;
+}
 
-nav:
-  - Home: index.md
-  - Unreal:
-      - Week 1: unreal/week01.md
-      - Week 2: unreal/week02.md
-      - Week 3: unreal/week03.md
+.md-header__title,
+.md-header__button,
+.md-search__icon {
+  color: #111827;
+}
 
-plugins:
-  - search
+/* 검색창 느낌 */
+.md-search__form {
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  background: #ffffff;
+}
+
+/* 좌측 사이드바 */
+.md-sidebar--primary {
+  border-right: 1px solid #e5e7eb;
+}
+
+.md-nav__title {
+  font-weight: 700;
+  color: #111827;
+}
+
+.md-nav__item .md-nav__link {
+  border-radius: 6px;
+  margin: 2px 0;
+}
+
+/* 현재 선택된 메뉴 */
+.md-nav__link--active,
+.md-nav__link:focus,
+.md-nav__link:hover {
+  color: #2563eb;
+}
+
+/* 본문 너비를 GitHub Docs처럼 너무 넓지 않게 */
+.md-grid {
+  max-width: 1440px;
+}
+
+/* 문서 본문 */
+.md-content__inner {
+  margin-top: 1rem;
+}
+
+.md-typeset h1 {
+  font-weight: 700;
+  color: #111827;
+}
+
+.md-typeset h2,
+.md-typeset h3 {
+  color: #111827;
+}
+
+/* 우측 TOC도 깔끔하게 */
+.md-sidebar--secondary {
+  border-left: 1px solid #f3f4f6;
+}
+
+/* 표/박스 */
+.md-typeset table:not([class]) {
+  border: 1px solid #e5e7eb;
+}
+
+.md-typeset table:not([class]) th,
+.md-typeset table:not([class]) td {
+  border-top: 1px solid #e5e7eb;
+}
+
+/* 코드블록도 너무 진하지 않게 */
+.md-typeset pre > code {
+  border-radius: 10px;
+}
+
+/* 푸터 단순화 */
+.md-footer {
+  border-top: 1px solid #e5e7eb;
+  background: #ffffff;
+}
+
+.md-footer-meta {
+  background: #ffffff;
+}
