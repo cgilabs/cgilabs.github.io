@@ -8,45 +8,33 @@
 {% endblock %}
 
 {% block header %}
-  <header class="md-header" data-md-component="header">
-    <nav class="md-header__inner md-grid" aria-label="{{ lang.t('header') }}">
-      <a
-        href="{{ nav.homepage.url | url }}"
-        title="{{ config.site_name }}"
-        class="md-header__button md-logo"
-        aria-label="{{ config.site_name }}"
-      >
-        {% if config.theme.logo %}
-          <img src="{{ config.theme.logo | url }}" alt="logo" />
-        {% endif %}
-      </a>
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="{{ lang.t('header') }}">
+    <a
+      href="{{ nav.homepage.url | url }}"
+      title="{{ config.site_name }}"
+      class="md-header__button md-logo"
+      aria-label="{{ config.site_name }}"
+    >
+      {% if config.theme.logo %}
+        <img src="{{ config.theme.logo | url }}" alt="logo" />
+      {% endif %}
+    </a>
 
-      <a
-        href="{{ nav.homepage.url | url }}"
-        title="{{ config.site_name }}"
-        class="md-header__title"
-        aria-label="{{ config.site_name }}"
-      >
-        <span class="md-header__topic">
-          <span class="md-ellipsis">{{ config.site_name }}</span>
-        </span>
-      </a>
+    <a
+      href="{{ nav.homepage.url | url }}"
+      title="{{ config.site_name }}"
+      class="md-header__title"
+      aria-label="{{ config.site_name }}"
+    >
+      <span class="md-header__topic">
+        <span class="md-ellipsis">{{ config.site_name }}</span>
+      </span>
+    </a>
 
-      {% include "partials/search.html" %}
-    </nav>
-  </header>
-{% endblock %}
-
-{% block content %}
-  {{ super() }}
-{% endblock %}
-
-{% block scripts %}
-  {{ super() }}
-{% endblock %}
-
-{% block footer %}
-  {{ super() }}
+    {% include "partials/search.html" %}
+  </nav>
+</header>
 {% endblock %}
 
 {% block site_nav %}
