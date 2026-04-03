@@ -6,3 +6,56 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 {% endblock %}
+
+{% block header %}
+  <header class="md-header" data-md-component="header">
+    <nav class="md-header__inner md-grid" aria-label="{{ lang.t('header') }}">
+      <a
+        href="{{ nav.homepage.url | url }}"
+        title="{{ config.site_name }}"
+        class="md-header__button md-logo"
+        aria-label="{{ config.site_name }}"
+      >
+        {% if config.theme.logo %}
+          <img src="{{ config.theme.logo | url }}" alt="logo" />
+        {% endif %}
+      </a>
+
+      <a
+        href="{{ nav.homepage.url | url }}"
+        title="{{ config.site_name }}"
+        class="md-header__title"
+        aria-label="{{ config.site_name }}"
+      >
+        <span class="md-header__topic">
+          <span class="md-ellipsis">{{ config.site_name }}</span>
+        </span>
+      </a>
+
+      {% include "partials/search.html" %}
+    </nav>
+  </header>
+{% endblock %}
+
+{% block content %}
+  {{ super() }}
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+{% endblock %}
+
+{% block footer %}
+  {{ super() }}
+{% endblock %}
+
+{% block site_nav %}
+  {{ super() }}
+
+  <div class="custom-sidebar-footer">
+    <a href="https://cgilab.gitbook.io/artcenter" target="_blank" rel="noopener">
+      <span class="footer-icon">🧱</span>
+      <span>Powered by GitBook</span>
+    </a>
+  </div>
+{% endblock %}

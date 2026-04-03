@@ -42,3 +42,8 @@ nav:
       - 3D 리깅하기: creator/rigging.md
       - Unity Engine: creator/unity.md
       - 3D 컨버팅&내보내기: creator/export.md
+  - Icon:
+      - 썸네일 가이드라인: icon/thumbnail-guide.md
+  - Modeling: modeling/index.md
+  - Page: page/index.md
+  - Page 1: page/page1.md
