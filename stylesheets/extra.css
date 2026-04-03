@@ -1,103 +1,298 @@
-/* 전체 기본 톤 */
+/* =========================================
+   CGILABS / GitHub Docs Style for MkDocs
+   ========================================= */
+
 :root {
-  --md-primary-fg-color: #ffffff;
-  --md-primary-bg-color: #111827;
-  --md-accent-fg-color: #2563eb;
+  --md-text-font: "Inter", "Noto Sans KR", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --md-code-font: "JetBrains Mono", "SFMono-Regular", Consolas, Menlo, monospace;
 
   --md-default-bg-color: #ffffff;
-  --md-default-fg-color: #1f2937;
-  --md-typeset-a-color: #2563eb;
+  --md-default-fg-color: #24292f;
+  --md-typeset-a-color: #0969da;
+
+  --md-primary-fg-color: #ffffff;
+  --md-primary-bg-color: #24292f;
+  --md-accent-fg-color: #0969da;
 }
 
-/* 상단 헤더를 GitHub Docs처럼 얇고 깔끔하게 */
+/* 전체 기본 */
+html,
+body {
+  font-family: var(--md-text-font);
+  color: #24292f;
+  background: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+body {
+  font-weight: 400;
+}
+
+/* 상단 헤더 */
 .md-header {
   background: #ffffff;
-  color: #111827;
-  border-bottom: 1px solid #e5e7eb;
+  color: #24292f;
+  border-bottom: 1px solid #d0d7de;
   box-shadow: none;
 }
 
 .md-header__title,
 .md-header__button,
-.md-search__icon {
-  color: #111827;
+.md-search__icon,
+.md-search__output,
+.md-tabs__link {
+  color: #24292f;
 }
 
-/* 검색창 느낌 */
-.md-search__form {
-  border: 1px solid #d1d5db;
-  border-radius: 10px;
-  background: #ffffff;
-}
-
-/* 좌측 사이드바 */
-.md-sidebar--primary {
-  border-right: 1px solid #e5e7eb;
-}
-
-.md-nav__title {
+.md-header__title .md-ellipsis {
   font-weight: 700;
-  color: #111827;
 }
 
-.md-nav__item .md-nav__link {
-  border-radius: 6px;
-  margin: 2px 0;
+/* 검색창 */
+.md-search__form {
+  background: #ffffff;
+  border: 1px solid #d0d7de;
+  border-radius: 8px;
+  box-shadow: none;
 }
 
-/* 현재 선택된 메뉴 */
-.md-nav__link--active,
-.md-nav__link:focus,
-.md-nav__link:hover {
-  color: #2563eb;
+.md-search__input {
+  font-size: 14px;
 }
 
-/* 본문 너비를 GitHub Docs처럼 너무 넓지 않게 */
+/* 전체 폭 */
 .md-grid {
   max-width: 1440px;
 }
 
-/* 문서 본문 */
+/* 좌측 사이드바 */
+.md-sidebar--primary {
+  border-right: 1px solid #d8dee4;
+}
+
+.md-sidebar__scrollwrap {
+  padding-top: 10px;
+}
+
+/* 메뉴 그룹 제목 */
+.md-nav__title {
+  background: transparent;
+  box-shadow: none;
+  color: #57606a;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin: 14px 0 6px 0;
+  padding: 0 12px;
+}
+
+/* 메뉴 간격 */
+.md-nav__item {
+  margin: 2px 0;
+}
+
+/* 메뉴 링크 */
+.md-nav__link {
+  font-family: var(--md-text-font);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.55;
+  color: #24292f;
+  border-radius: 6px;
+  padding: 7px 12px;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+/* hover */
+.md-nav__link:hover {
+  background: #f6f8fa;
+  color: #0969da;
+}
+
+/* 선택 항목 */
+.md-nav__link--active {
+  font-weight: 700;
+  color: #0969da !important;
+  background: #eef6ff;
+  border-left: 3px solid #0969da;
+  padding-left: 9px;
+}
+
+/* 하위 메뉴 들여쓰기 */
+.md-nav__list .md-nav__list {
+  margin-left: 8px;
+  padding-left: 8px;
+  border-left: 1px solid #d8dee4;
+}
+
+/* 토글 아이콘 */
+.md-nav__icon {
+  color: #57606a;
+}
+
+/* 본문 영역 */
 .md-content__inner {
   margin-top: 1rem;
+  padding-bottom: 3rem;
 }
 
+.md-typeset {
+  font-size: 16px;
+  line-height: 1.75;
+  color: #24292f;
+}
+
+/* 문단 줄간격 */
+.md-typeset p {
+  line-height: 1.8;
+  margin: 0 0 1.1em;
+}
+
+/* 리스트 간격 */
+.md-typeset ul,
+.md-typeset ol {
+  margin-top: 0.4em;
+  margin-bottom: 1em;
+  padding-left: 1.4em;
+}
+
+.md-typeset li {
+  line-height: 1.8;
+  margin: 0.25em 0;
+}
+
+/* 제목 */
 .md-typeset h1 {
+  color: #24292f;
+  font-size: 2.2rem;
   font-weight: 700;
-  color: #111827;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin: 0 0 1rem;
 }
 
-.md-typeset h2,
+.md-typeset h2 {
+  color: #24292f;
+  font-size: 1.65rem;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  margin-top: 2rem;
+  margin-bottom: 0.65rem;
+  padding-bottom: 0.2em;
+  border-bottom: 1px solid #d8dee4;
+}
+
 .md-typeset h3 {
-  color: #111827;
+  color: #24292f;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-top: 1.5rem;
+  margin-bottom: 0.45rem;
 }
 
-/* 우측 TOC도 깔끔하게 */
-.md-sidebar--secondary {
-  border-left: 1px solid #f3f4f6;
+/* 링크 */
+.md-typeset a {
+  color: #0969da;
+  text-decoration: none;
 }
 
-/* 표/박스 */
+.md-typeset a:hover {
+  text-decoration: underline;
+}
+
+/* 인라인 코드 */
+.md-typeset code {
+  font-family: var(--md-code-font);
+  font-size: 0.85em;
+  color: #24292f;
+  background: #f6f8fa;
+  border: 1px solid #d8dee4;
+  border-radius: 6px;
+  padding: 0.15em 0.4em;
+}
+
+/* 코드 블록 */
+.md-typeset pre {
+  line-height: 1.5;
+}
+
+.md-typeset pre > code {
+  font-family: var(--md-code-font);
+  font-size: 0.9em;
+  border-radius: 10px;
+  border: 1px solid #d8dee4;
+}
+
+/* 표 */
 .md-typeset table:not([class]) {
-  border: 1px solid #e5e7eb;
+  border: 1px solid #d8dee4;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .md-typeset table:not([class]) th,
 .md-typeset table:not([class]) td {
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid #d8dee4;
+  padding: 10px 14px;
 }
 
-/* 코드블록도 너무 진하지 않게 */
-.md-typeset pre > code {
-  border-radius: 10px;
+.md-typeset table:not([class]) th {
+  background: #f6f8fa;
+  font-weight: 600;
 }
 
-/* 푸터 단순화 */
+/* 우측 TOC */
+.md-sidebar--secondary {
+  border-left: 1px solid #f0f2f4;
+}
+
+.md-nav--secondary .md-nav__title {
+  font-size: 12px;
+  color: #57606a;
+  text-transform: uppercase;
+}
+
+.md-nav--secondary .md-nav__link {
+  font-size: 13px;
+  line-height: 1.5;
+  padding: 6px 10px;
+}
+
+/* 푸터 */
 .md-footer {
-  border-top: 1px solid #e5e7eb;
   background: #ffffff;
+  border-top: 1px solid #d8dee4;
 }
 
 .md-footer-meta {
   background: #ffffff;
+  color: #57606a;
+}
+
+/* 버튼 */
+.md-button {
+  border-radius: 8px;
+}
+
+/* 모바일 */
+@media screen and (max-width: 76.234375em) {
+  .md-sidebar--primary {
+    border-right: none;
+  }
+
+  .md-typeset h1 {
+    font-size: 1.9rem;
+  }
+
+  .md-typeset h2 {
+    font-size: 1.45rem;
+  }
+
+  .md-typeset h3 {
+    font-size: 1.15rem;
+  }
 }
