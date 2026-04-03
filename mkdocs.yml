@@ -1,8 +1,10 @@
 site_name: CGILABS Docs
 site_url: https://cgilabs.github.io/
 
+
 theme:
-  name: material
+  name: null
+  custom_dir: theme/mkdocs-gitbook-theme/mkdocs_gitbook
 
 nav:
   - Home: index.md
