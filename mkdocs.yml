@@ -5,8 +5,8 @@ theme:
   name: material
   language: ko
   features:
-    - navigation.expand
     - navigation.sections
+    - navigation.expand
     - navigation.top
     - search.suggest
     - search.highlight
@@ -30,6 +30,7 @@ nav:
   - Unreal:
       - Week 1: unreal/week01.md
       - Week 2: unreal/week02.md
+      - Week 3: unreal/week03.md
 
 plugins:
   - search
