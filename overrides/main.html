@@ -1,19 +1,26 @@
 {% extends "base.html" %}
 
-{% block extrahead %}
+{% block content %}
   {{ super() }}
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 {% endblock %}
 
-{% block site_nav %}
-  {{ super() }}
+{% block sidebar %}
 
+<div class="custom-sidebar-layout">
+
+  <!-- 메뉴 영역 (스크롤) -->
+  <div class="custom-sidebar-scroll">
+    {{ super() }}
+  </div>
+
+  <!-- 하단 고정 영역 -->
   <div class="custom-sidebar-footer">
-    <a href="https://cgilab.gitbook.io/artcenter" target="_blank" rel="noopener">
-      <span class="footer-icon">🧱</span>
+    <a href="https://www.gitbook.com" target="_blank">
+      <span class="footer-icon">📚</span>
       <span>Powered by GitBook</span>
     </a>
   </div>
+
+</div>
+
 {% endblock %}
