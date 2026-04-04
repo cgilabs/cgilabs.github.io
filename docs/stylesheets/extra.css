@@ -1,63 +1,90 @@
 :root {
   --md-text-font: "Inter", "Noto Sans KR", -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --md-code-font: "JetBrains Mono", Consolas, monospace;
+  --md-code-font: "JetBrains Mono", "SFMono-Regular", Consolas, Menlo, monospace;
+
+  --md-default-bg-color: #ffffff;
+  --md-default-fg-color: #24292f;
+  --md-typeset-a-color: #0969da;
 
   --sidebar-width: 18rem;
   --header-height: 3rem;
+
+  --brand-header-bg: #3f73e0;
+  --brand-header-fg: #ffffff;
+  --brand-header-border: #2f61cb;
 }
 
 /* =========================
    Base
    ========================= */
-html, body {
+html,
+body {
   font-family: var(--md-text-font);
   color: #24292f;
   background: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+body {
+  font-weight: 400;
 }
 
 /* =========================
-   Header (GitBook 스타일)
+   Header
    ========================= */
 .md-header {
-  background: #3f73e0;
-  color: #fff;
-  border-bottom: 1px solid #2f61cb;
+  background: var(--brand-header-bg);
+  color: var(--brand-header-fg);
+  border-bottom: 1px solid var(--brand-header-border);
+  box-shadow: none;
 }
 
-.md-header__title {
+.md-header__title,
+.md-header__button,
+.md-search__icon {
+  color: var(--brand-header-fg);
+}
+
+.md-header__title .md-ellipsis {
   font-weight: 700;
 }
 
 .md-header__button.md-logo img {
   height: 24px;
+  width: auto;
 }
 
-/* 검색창 (회색 15%) */
+/* 검색창 바깥 폼은 투명 유지 */
 .md-search__form {
-  background: rgba(0, 0, 0, 0.15);
-  border-radius: 12px;
-  border: none;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
+/* 검색 입력창 내부만 회색 15% */
 .md-search__input {
-  color: #fff;
+  background: rgba(0, 0, 0, 0.15) !important;
+  border-radius: 12px;
+  color: #ffffff !important;
 }
 
 .md-search__input::placeholder {
-  color: rgba(255,255,255,0.7);
+  color: rgba(255, 255, 255, 0.7) !important;
 }
 
+/* 아이콘 */
 .md-search__icon {
-  color: rgba(255,255,255,0.8);
+  color: rgba(255, 255, 255, 0.85) !important;
 }
 
-.md-search__form:hover {
-  background: rgba(0,0,0,0.22);
-}
-
-.md-search__form:focus-within {
-  background: rgba(0,0,0,0.28);
+/* 검색 열렸을 때 결과창은 기본 유지 */
+.md-search__output,
+.md-search__scrollwrap,
+.md-search-result,
+.md-search-result__meta {
+  background: initial;
+  color: initial;
 }
 
 /* =========================
@@ -67,179 +94,376 @@ html, body {
   max-width: 1500px;
 }
 
+/* breadcrumb 숨김 */
 .md-path {
-  display: none;
+  display: none !important;
 }
 
 /* =========================
-   Sidebar (핵심 구조)
+   Sidebar (Desktop)
    ========================= */
 @media screen and (min-width: 76.25em) {
-
   .md-sidebar--primary {
     position: fixed;
     top: var(--header-height);
-    bottom: 0;
     left: 0;
+    bottom: 0;
     width: var(--sidebar-width);
     border-right: 1px solid #d8dee4;
-    background: #fff;
+    background: #ffffff;
+    z-index: 10;
   }
 
-  .md-sidebar__inner {
+  .md-sidebar--primary .md-sidebar__inner {
     height: 100%;
     padding: 0;
   }
 
-  .md-sidebar__scrollwrap {
+  .md-sidebar--primary .md-sidebar__scrollwrap {
+    overflow: visible;
     height: 100%;
-    overflow: hidden;
+    padding: 0;
   }
 
-  /* 전체 구조 */
+  /* override 구조 */
   .custom-sidebar-layout {
     display: flex;
     flex-direction: column;
     height: 100%;
+    min-height: 100%;
+    background: #ffffff;
   }
 
-  /* 메뉴 영역 */
+  /* 메뉴 스크롤 영역 */
   .custom-sidebar-scroll {
-    flex: 1;
+    flex: 1 1 auto;
+    min-height: 0;
     overflow-y: auto;
-    padding: 14px 12px;
+    padding: 14px 12px 12px;
   }
 
-  /* 하단 고정 */
+  /* 하단 고정 박스 */
   .custom-sidebar-footer {
+    flex: 0 0 auto;
     padding: 12px;
     border-top: 1px solid #e5e7eb;
-    background: #fff;
+    background: #ffffff;
   }
 
-  /* 콘텐츠 밀기 */
+  /* 본문을 사이드바만큼 밀기 */
   .md-main__inner {
     margin-left: var(--sidebar-width);
   }
 }
 
 /* =========================
-   Sidebar Menu
+   Sidebar nav
    ========================= */
 .md-nav__title {
-  font-size: 12px;
+  background: transparent;
+  box-shadow: none;
   color: #57606a;
+  font-size: 12px;
   font-weight: 700;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
-  margin: 14px 0 6px;
+  margin: 14px 0 6px 0;
   padding: 0 12px;
 }
 
+.md-nav__item {
+  margin: 2px 0;
+}
+
 .md-nav__link {
+  font-family: var(--md-text-font);
   font-size: 14px;
-  padding: 8px 12px;
+  font-weight: 500;
+  line-height: 1.55;
+  color: #24292f;
   border-radius: 8px;
+  padding: 8px 12px;
+  transition: background-color 0.15s ease, color 0.15s ease;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .md-nav__link:hover {
   background: #f6f8fa;
+  color: #0969da;
 }
 
 .md-nav__link--active {
+  font-weight: 700;
+  color: #0969da !important;
   background: #eef6ff;
   border-left: 3px solid #0969da;
-  font-weight: 700;
+  padding-left: 9px;
 }
 
-/* 하위 메뉴 라인 */
 .md-nav__list .md-nav__list {
-  border-left: 1px solid #d8dee4;
   margin-left: 6px;
   padding-left: 6px;
+  border-left: 1px solid #d8dee4;
+}
+
+.md-nav__icon {
+  color: #8a94a6;
 }
 
 /* =========================
-   Footer (GitBook 박스)
+   Sidebar footer box
    ========================= */
 .custom-sidebar-footer a {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 12px;
+  padding: 12px 14px;
   border: 1px solid #d8dee4;
   border-radius: 14px;
-  text-decoration: none;
+  background: #ffffff;
   color: #57606a;
+  text-decoration: none;
   font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
 }
 
 .custom-sidebar-footer a:hover {
-  background: #f6f8fa;
+  background: #f8fafc;
+  color: #24292f;
+}
+
+.footer-icon {
+  font-size: 15px;
+  line-height: 1;
 }
 
 /* =========================
    Content
    ========================= */
 .md-content__inner {
+  margin-top: 1rem;
   padding-bottom: 3rem;
 }
 
+.md-typeset {
+  font-size: 16px;
+  line-height: 1.75;
+  color: #24292f;
+}
+
+.md-typeset p {
+  line-height: 1.8;
+  margin: 0 0 1.1em;
+}
+
+.md-typeset ul,
+.md-typeset ol {
+  margin-top: 0.4em;
+  margin-bottom: 1em;
+  padding-left: 1.4em;
+}
+
+.md-typeset li {
+  line-height: 1.8;
+  margin: 0.25em 0;
+}
+
 .md-typeset h1 {
+  color: #24292f;
   font-size: 2.2rem;
   font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin: 0 0 1rem;
 }
 
 .md-typeset h2 {
-  border-bottom: 1px solid #d8dee4;
+  color: #24292f;
+  font-size: 1.65rem;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  margin-top: 2rem;
+  margin-bottom: 0.65rem;
   padding-bottom: 0.2em;
+  border-bottom: 1px solid #d8dee4;
 }
 
-/* 이미지 테두리 */
+.md-typeset h3 {
+  color: #24292f;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-top: 1.5rem;
+  margin-bottom: 0.45rem;
+}
+
+.md-typeset a {
+  color: #0969da;
+  text-decoration: none;
+}
+
+.md-typeset a:hover {
+  text-decoration: underline;
+}
+
+/* 코드 */
+.md-typeset code {
+  font-family: var(--md-code-font);
+  font-size: 0.85em;
+  color: #24292f;
+  background: #f6f8fa;
+  border: 1px solid #d8dee4;
+  border-radius: 6px;
+  padding: 0.15em 0.4em;
+}
+
+.md-typeset pre {
+  line-height: 1.5;
+}
+
+.md-typeset pre > code {
+  font-family: var(--md-code-font);
+  font-size: 0.9em;
+  border-radius: 10px;
+  border: 1px solid #d8dee4;
+}
+
+/* 이미지 */
 .md-typeset img {
   border: 1px solid #000;
   border-radius: 4px;
 }
 
 /* =========================
-   Cards (홈 UI)
+   TOC / Footer
+   ========================= */
+.md-sidebar--secondary {
+  border-left: 1px solid #f0f2f4;
+}
+
+.md-nav--secondary .md-nav__title {
+  font-size: 12px;
+  color: #57606a;
+  text-transform: uppercase;
+}
+
+.md-nav--secondary .md-nav__link {
+  font-size: 13px;
+  line-height: 1.5;
+  padding: 6px 10px;
+}
+
+.md-footer {
+  background: #ffffff;
+  border-top: 1px solid #d8dee4;
+}
+
+.md-footer-meta {
+  background: #ffffff;
+  color: #57606a;
+}
+
+/* =========================
+   Link cards
    ========================= */
 .link-card-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
+  margin-top: 1.2rem;
+  margin-bottom: 2rem;
   max-width: 820px;
 }
 
 .link-card {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 18px;
+  justify-content: space-between;
+  min-height: 86px;
+  padding: 18px 20px;
   border: 1px solid #d8dee4;
   border-radius: 10px;
-  text-decoration: none;
+  background: #ffffff;
   color: #24292f;
+  text-decoration: none !important;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
 }
 
 .link-card:hover {
   border-color: #0969da;
   background: #f8fbff;
+  box-shadow: 0 2px 10px rgba(9, 105, 218, 0.08);
 }
 
 .link-card-title {
+  font-size: 1rem;
   font-weight: 600;
+  line-height: 1.45;
+  color: #24292f;
+}
+
+.link-card-desc {
+  margin-top: 6px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #57606a;
 }
 
 .link-card-arrow {
+  margin-left: 16px;
+  font-size: 1.35rem;
+  line-height: 1;
   color: #6b7280;
+  flex-shrink: 0;
+}
+
+.link-card:hover .link-card-arrow {
+  color: #0969da;
 }
 
 /* =========================
-   Mobile 대응
+   Mobile
    ========================= */
 @media screen and (max-width: 900px) {
   .link-card-grid {
     grid-template-columns: 1fr;
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 76.234375em) {
+  .md-sidebar--primary {
+    border-right: none;
+  }
+
+  .custom-sidebar-layout {
+    height: auto;
+    min-height: auto;
+  }
+
+  .custom-sidebar-scroll {
+    overflow: visible;
+    padding: 14px 12px 0;
+  }
+
+  .custom-sidebar-footer {
+    border-top: none;
+    padding: 16px 12px 12px;
+  }
+
+  .md-typeset h1 {
+    font-size: 1.9rem;
+  }
+
+  .md-typeset h2 {
+    font-size: 1.45rem;
+  }
+
+  .md-typeset h3 {
+    font-size: 1.15rem;
   }
 }
